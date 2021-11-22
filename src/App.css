@@ -12,6 +12,7 @@ main {
 	margin: 0.5rem 0;
 	padding: 0 1rem;
 	position: relative;
+	box-shadow: 0 0 3px black;
 }
 
 img {
@@ -23,6 +24,8 @@ img {
 	top: -8px;
 	right: -8px;
 	background-color: white;
+	-o-object-fit: cover;
+	object-fit: cover;
 }
 
 span {
