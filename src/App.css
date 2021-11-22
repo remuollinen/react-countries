@@ -1,0 +1,30 @@
+main {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	padding: 1rem;
+}
+
+.country-card {
+	width: 29%;
+	height: 150px;
+	border: 1px solid black;
+	margin: 0.5rem 0;
+	padding: 0 1rem;
+	position: relative;
+}
+
+img {
+	height: 40px;
+	width: 40px;
+	border: 1px solid black;
+	border-radius: 50%;
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	background-color: white;
+}
+
+span {
+	font-weight: 800;
+}
