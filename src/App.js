@@ -46,12 +46,10 @@ class App extends Component {
 				</header>
 				<main>
 					{this.state.isLoading ? (
-						<div>
-							<FontAwesomeIcon
-								className="fas fa-spinner fa-spin loader"
-								icon={faSpinner}
-							/>
-						</div>
+						<FontAwesomeIcon
+							className="fas fa-spinner fa-spin loader"
+							icon={faSpinner}
+						/>
 					) : (
 						filteredCountries.map((country) => {
 							return (
