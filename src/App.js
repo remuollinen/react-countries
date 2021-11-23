@@ -1,40 +1,77 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
+import Numeral from "react-numeral";
 
 class App extends Component {
 	state = {
 		data: [],
+		search: "",
 	};
 
 	componentDidMount() {
-		axios.get("https://restcountries.com/v3.1/all").then((response) => {
-			this.setState({ data: response.data });
-		});
+		axios
+			.get(
+				"https://restcountries.com/v2/all?fields=name,capital,flags,population,languages"
+			)
+			.then((response) => {
+				this.setState({ data: response.data });
+				// console.log(this.state.data);
+			});
 	}
 
+	searchHandler = (e) => {
+		this.setState({
+			search: e.target.value,
+		});
+	};
+
 	render() {
+		const filteredCountries = this.state.data.filter((c) => {
+			return c.name.toLowerCase().includes(this.state.search.toLowerCase());
+		});
+
 		return (
-			<main>
-				{this.state.data.map((country) => {
-					return (
-						<div key={country.name.common} className="country-card">
-							<h2>{country.name.common}</h2>
-							<img
-								src={`${country.flags.svg}`}
-								alt={`flag of ${country.name.common}`}
-							/>
-							<p>
-								Capital: <span>{country.capital}</span>
-							</p>
-							<p>
-								They drive on the <span>{country.car.side}</span> side of the
-								road.
-							</p>
-						</div>
-					);
-				})}
-			</main>
+			<div className="app">
+				<header>
+					<h1>Countries App</h1>
+					<input
+						type="text"
+						placeholder="Search for a country"
+						onChange={this.searchHandler}
+					/>
+				</header>
+				<main>
+					{filteredCountries.map((country) => {
+						return (
+							<div key={country.name} className="country-card">
+								<div className="card-header">
+									<h2>{country.name}</h2>
+									<p>
+										<span>{country.capital}</span>
+									</p>
+								</div>
+								<img
+									src={`${country.flags.svg}`}
+									alt={`flag of ${country.name}`}
+								/>
+								<p>
+									Population:{" "}
+									<span>
+										{<Numeral value={country.population} format={"0.0a"} />}
+									</span>
+								</p>
+								<p>
+									Language(s):{" "}
+									{country.languages.map((lang, i) => (
+										<span key={i}> {lang.name} </span>
+									))}
+								</p>
+							</div>
+						);
+					})}
+				</main>
+			</div>
 		);
 	}
 }
