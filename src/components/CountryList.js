@@ -18,7 +18,7 @@ class CountryList extends Component {
 			)
 			.then((response) => {
 				this.setState({ data: response.data, isLoading: false });
-				console.log(this.state.data);
+				// console.log(this.state.data);
 			});
 	}
 
@@ -52,6 +52,7 @@ class CountryList extends Component {
 						filteredCountries.map((country) => {
 							return (
 								<CountryCard
+									key={country.name}
 									name={country.name}
 									capital={country.capital}
 									flags={country.flags}
