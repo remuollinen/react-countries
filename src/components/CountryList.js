@@ -35,7 +35,7 @@ class CountryList extends Component {
 		return (
 			<>
 				<header>
-					<h1>Countries App</h1>
+					<h1>Search for country</h1>
 					<input
 						type="text"
 						placeholder="Search for a country"
@@ -50,17 +50,7 @@ class CountryList extends Component {
 						/>
 					) : (
 						filteredCountries.map((country) => {
-							return (
-								<CountryCard
-									key={country.name}
-									name={country.name}
-									capital={country.capital}
-									flags={country.flags}
-									population={country.population}
-									languages={country.languages}
-									callingCodes={country.callingCodes}
-								/>
-							);
+							return <CountryCard key={country.name} {...country} />;
 						})
 					)}
 				</main>

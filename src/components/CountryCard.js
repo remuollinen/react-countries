@@ -1,5 +1,6 @@
 import React from "react";
 import Numeral from "react-numeral";
+import { Link } from "react-router-dom";
 
 const CountryCard = ({
 	name,
@@ -10,7 +11,7 @@ const CountryCard = ({
 	callingCodes,
 }) => {
 	return (
-		<div key={name} className="country-card">
+		<Link to={capital} className="country-card">
 			<div className="card-header">
 				<h2>{name}</h2>
 				<p>
@@ -34,7 +35,7 @@ const CountryCard = ({
 					<span key={i}> +{code} </span>
 				))}
 			</p>
-		</div>
+		</Link>
 	);
 };
 

@@ -1,16 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
+:root {
+	--highlight: rgba(119, 23, 23, 0.74);
+}
+
 .app {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	font-family: "Raleway", sans-serif;
+}
+
+nav ul {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	margin: 1.5rem 0;
+	padding: 0;
+}
+
+nav ul li a {
+	margin: 0.5rem;
+	padding: 0 0.5rem;
+	font-size: 1.5rem;
+	text-decoration: none;
+	font-weight: 700;
+	color: var(--highlight);
+	cursor: pointer;
+	border-bottom: 2px solid var(--highlight);
 }
 
 header {
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	margin: 1.5rem 0;
 }
 
-header h1 {
-	margin: 2rem 0;
+header,
+h1,
+input {
+	margin: 1rem 0;
 }
 
 header input {
@@ -34,6 +65,7 @@ main {
 }
 
 .country-card {
+	text-decoration: none;
 	width: 30vw;
 	height: auto;
 	border: 1px solid black;
@@ -41,14 +73,20 @@ main {
 	margin: 0.5rem;
 	position: relative;
 	box-shadow: 0 0 3px black;
+	transition: all 0.2s ease-in-out;
+}
+
+.country-card:hover {
+	box-shadow: 0 0 18px black;
 }
 
 p {
 	padding: 0 1rem;
+	color: black;
 }
 
 .card-header {
-	background-color: rgb(146, 146, 146);
+	background-color: var(--highlight);
 	padding: 0.5rem;
 }
 
@@ -62,7 +100,7 @@ p {
 img {
 	height: 40px;
 	width: 40px;
-	border: 1px solid black;
+	border: 2px solid black;
 	border-radius: 50%;
 	position: absolute;
 	top: -8px;
@@ -74,4 +112,13 @@ img {
 
 span {
 	font-weight: 800;
+}
+
+.home {
+	text-align: center;
+}
+
+.home h1,
+.home p {
+	margin: 2.5rem 0;
 }
