@@ -68,7 +68,8 @@ main {
 	text-decoration: none;
 	width: 30vw;
 	height: auto;
-	border: 1px solid black;
+	border: 2px solid black;
+	border-radius: 5px;
 	margin: 0.5rem 0;
 	margin: 0.5rem;
 	position: relative;
@@ -77,7 +78,7 @@ main {
 }
 
 .country-card:hover {
-	box-shadow: 0 0 18px black;
+	box-shadow: 0 0 13px black;
 }
 
 p {
@@ -114,8 +115,10 @@ span {
 	font-weight: 800;
 }
 
-.home {
+.home,
+.country-single {
 	text-align: center;
+	padding: 2rem;
 }
 
 .home h1,
