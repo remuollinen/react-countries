@@ -125,3 +125,8 @@ span {
 .home p {
 	margin: 2.5rem 0;
 }
+
+.weather-icon {
+	height: 50px;
+	width: 50px;
+}
