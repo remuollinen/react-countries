@@ -134,26 +134,63 @@ span {
 
 .country-single-wrapper {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin: 5rem 0 0 0;
+	margin: 2rem 0 0 0;
 }
 
 .country-single {
-	width: 30vw;
+	width: 40vw;
 	height: auto;
 	border: 2px solid black;
 	border-radius: 5px;
-	margin: 0.5rem 0;
-	margin: 0.5rem;
+	padding: 0;
 	position: relative;
 	box-shadow: 0 0 3px black;
 }
 
-.weather-icon {
-	height: 100px;
-	width: 100px;
-	position: unset;
-	border: none;
+.country-single img {
+	height: 60px;
+	width: 60px;
+	top: -20px;
+	right: -20px;
+}
+
+.weather-wrapper {
+	width: 100%;
+	padding-top: 0.5rem;
 	background-color: var(--highlight);
+}
+
+.weather-wrapper p,
+.weather-wrapper h2 {
+	margin: 0.5rem;
+	color: white;
+}
+
+.weather-icon {
+	height: 150px;
+	width: 150px;
+	position: unset;
+	border: 2px solid black;
+	margin: 1.5rem 0;
+	padding: 1rem;
+}
+
+.back-btn {
+	margin: 2rem 0;
+	border: 2px solid black;
+	padding: 1rem;
+	border-radius: 5px;
+	box-shadow: 0 0 3px black;
+	background-color: var(--highlight);
+	color: white;
+	font-size: 1.5rem;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.back-btn:hover {
+	box-shadow: 0 0 15px black;
 }

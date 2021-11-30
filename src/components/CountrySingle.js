@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import Numeral from "react-numeral";
 
 function getCountry(capital) {
 	return axios.get(`https://restcountries.com/v2/capital/${capital}`);
@@ -15,7 +16,7 @@ function getWeather(capital) {
 
 class CountrySingle extends Component {
 	state = {
-		country: {},
+		country: [],
 		weather: {},
 		isLoading: true,
 	};
@@ -31,7 +32,7 @@ class CountrySingle extends Component {
 				isLoading: false,
 			});
 			console.log(this.state.weather);
-			// console.log(this.state.weather.main);
+			console.log(this.state.country);
 			// console.log(this.state.weather.main.temp);
 		});
 	}
@@ -48,21 +49,76 @@ class CountrySingle extends Component {
 					</div>
 				) : (
 					<div className="country-single">
-						<h1>{this.props.params.capital}</h1>
+						<h1>{this.state.country[0].name}</h1>
+						<h2>{this.props.params.capital}</h2>
 						<p>
-							Current temperature: <span>{this.state.weather.main.temp}°</span>
+							Region: <span>{this.state.country[0].region}</span>
 						</p>
 						<p>
-							Description:{" "}
-							<span>{this.state.weather.weather[0].description}</span>
+							Population:{" "}
+							<span>
+								{
+									<Numeral
+										value={this.state.country[0].population}
+										format={"0.0a"}
+									/>
+								}
+							</span>
 						</p>
+						<p>
+							Language(s):{" "}
+							{this.state.country[0].languages.map((lang, i) => (
+								<span key={i}> {lang.name} </span>
+							))}
+						</p>
+						<p>
+							Currencies:{" "}
+							{this.state.country[0].currencies.map((currency, i) => (
+								<span key={i}>
+									{" "}
+									{`${currency.name} (${currency.symbol}) ${currency.code}`}{" "}
+								</span>
+							))}
+						</p>
+						<p>
+							Phone number prefix:{" "}
+							{this.state.country[0].callingCodes.map((code, i) => (
+								<span key={i}> +{code} </span>
+							))}
+						</p>
+						<div className="weather-wrapper">
+							<h2>Weather</h2>
+							<p>
+								Current temperature in {this.props.params.capital}:{" "}
+								<span>
+									{
+										<Numeral
+											value={this.state.weather.main.temp}
+											format={"0"}
+										/>
+									}
+									°
+								</span>
+							</p>
+							<p>
+								Description:{" "}
+								<span>{this.state.weather.weather[0].description}</span>
+							</p>
+							<img
+								className="weather-icon"
+								src={`http://openweathermap.org/img/wn/${this.state.weather.weather[0].icon}@2x.png`}
+								alt={`${this.state.weather.weather[0].description} weather icon`}
+							/>
+						</div>
 						<img
-							className="weather-icon"
-							src={`http://openweathermap.org/img/wn/${this.state.weather.weather[0].icon}@2x.png`}
-							alt={`${this.state.weather.weather[0].description} weather icon`}
+							src={this.state.country[0].flag}
+							alt={`flag of ${this.state.country[0].name}`}
 						/>
 					</div>
 				)}
+				<button className="back-btn" onClick={() => this.props.navigate(-1)}>
+					Go back to countries list
+				</button>
 			</div>
 		);
 	}

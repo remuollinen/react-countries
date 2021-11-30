@@ -8,12 +8,14 @@ import {
 	Route,
 	Link,
 	useParams,
+	useNavigate,
 } from "react-router-dom";
 import CountrySingle from "./components/CountrySingle";
 
 const RouteWrapper = (props) => {
 	const params = useParams();
-	return <CountrySingle params={params} {...props} />;
+	const navigate = useNavigate();
+	return <CountrySingle params={params} {...props} navigate={navigate} />;
 };
 
 const App = () => {
