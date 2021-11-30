@@ -58,6 +58,12 @@ main {
 	padding: 1rem;
 }
 
+.loader-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .loader {
 	margin: 10rem 0;
 	display: block;
@@ -126,7 +132,28 @@ span {
 	margin: 2.5rem 0;
 }
 
+.country-single-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 5rem 0 0 0;
+}
+
+.country-single {
+	width: 30vw;
+	height: auto;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 0.5rem 0;
+	margin: 0.5rem;
+	position: relative;
+	box-shadow: 0 0 3px black;
+}
+
 .weather-icon {
-	height: 50px;
-	width: 50px;
+	height: 100px;
+	width: 100px;
+	position: unset;
+	border: none;
+	background-color: var(--highlight);
 }

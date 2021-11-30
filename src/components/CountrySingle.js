@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 function getCountry(capital) {
 	return axios.get(`https://restcountries.com/v2/capital/${capital}`);
@@ -13,8 +15,9 @@ function getWeather(capital) {
 
 class CountrySingle extends Component {
 	state = {
-		country: [],
+		country: {},
 		weather: {},
+		isLoading: true,
 	};
 
 	componentDidMount() {
@@ -22,24 +25,44 @@ class CountrySingle extends Component {
 			getCountry(this.props.params.capital),
 			getWeather(this.props.params.capital),
 		]).then((res) => {
-			console.log(res[1].data);
 			this.setState({
 				country: res[0].data,
 				weather: res[1].data,
+				isLoading: false,
 			});
+			console.log(this.state.weather);
+			// console.log(this.state.weather.main);
+			// console.log(this.state.weather.main.temp);
 		});
 	}
 
 	render() {
 		return (
-			<div className="country-single">
-				<h1>{this.props.params.capital}</h1>
-				<p>The temperature in {this.props.params.capital} is degrees.</p>
-				{/* <img
-					className="weather-icon"
-					src={`http://openweathermap.org/img/wn/${this.state.weather.weather[0].icon}@2x.png`}
-					alt={`${this.state.weather.weather.description} weather icon`}
-				/> */}
+			<div className="country-single-wrapper">
+				{this.state.isLoading ? (
+					<div className="loader-wrapper">
+						<FontAwesomeIcon
+							className="fas fa-spinner fa-spin loader"
+							icon={faSpinner}
+						/>
+					</div>
+				) : (
+					<div className="country-single">
+						<h1>{this.props.params.capital}</h1>
+						<p>
+							Current temperature: <span>{this.state.weather.main.temp}°</span>
+						</p>
+						<p>
+							Description:{" "}
+							<span>{this.state.weather.weather[0].description}</span>
+						</p>
+						<img
+							className="weather-icon"
+							src={`http://openweathermap.org/img/wn/${this.state.weather.weather[0].icon}@2x.png`}
+							alt={`${this.state.weather.weather[0].description} weather icon`}
+						/>
+					</div>
+				)}
 			</div>
 		);
 	}
