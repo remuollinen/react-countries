@@ -9,6 +9,8 @@
 	flex-direction: column;
 	align-items: center;
 	font-family: "Raleway", sans-serif;
+	background: url("./bg.png") no-repeat fixed center/cover;
+	min-height: 100vh;
 }
 
 nav ul {
@@ -20,14 +22,14 @@ nav ul {
 }
 
 nav ul li a {
-	margin: 0.5rem;
+	margin: 0 1rem;
 	padding: 0 0.5rem;
 	font-size: 1.5rem;
 	text-decoration: none;
-	font-weight: 700;
+	font-weight: 800;
 	color: var(--highlight);
 	cursor: pointer;
-	border-bottom: 2px solid var(--highlight);
+	border-bottom: 3px solid var(--highlight);
 }
 
 header {
@@ -65,9 +67,8 @@ main {
 }
 
 .loader {
-	margin: 10rem 0;
 	display: block;
-	font-size: 4rem;
+	font-size: 5rem;
 }
 
 .country-card {
@@ -79,12 +80,13 @@ main {
 	margin: 0.5rem 0;
 	margin: 0.5rem;
 	position: relative;
-	box-shadow: 0 0 3px black;
+	box-shadow: 0 0 5px black;
 	transition: all 0.2s ease-in-out;
+	background-color: white;
 }
 
 .country-card:hover {
-	box-shadow: 0 0 13px black;
+	box-shadow: 0 0 15px black;
 }
 
 p {
@@ -138,6 +140,7 @@ span {
 	justify-content: center;
 	align-items: center;
 	margin: 2rem 0 0 0;
+	background-color: white;
 }
 
 .country-single {
@@ -147,7 +150,7 @@ span {
 	border-radius: 5px;
 	padding: 0;
 	position: relative;
-	box-shadow: 0 0 3px black;
+	box-shadow: 0 0 15px black;
 }
 
 .country-single img {

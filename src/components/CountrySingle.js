@@ -31,9 +31,6 @@ class CountrySingle extends Component {
 				weather: res[1].data,
 				isLoading: false,
 			});
-			console.log(this.state.weather);
-			console.log(this.state.country);
-			// console.log(this.state.weather.main.temp);
 		});
 	}
 
@@ -106,7 +103,7 @@ class CountrySingle extends Component {
 							</p>
 							<img
 								className="weather-icon"
-								src={`http://openweathermap.org/img/wn/${this.state.weather.weather[0].icon}@2x.png`}
+								src={`http://openweathermap.org/img/w/${this.state.weather.weather[0].icon}.png`}
 								alt={`${this.state.weather.weather[0].description} weather icon`}
 							/>
 						</div>

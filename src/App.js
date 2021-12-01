@@ -20,23 +20,25 @@ const RouteWrapper = (props) => {
 
 const App = () => {
 	return (
-		<BrowserRouter className="app">
-			<nav>
-				<ul>
-					<li>
-						<Link to="/">Home</Link>
-					</li>
-					<li>
-						<Link to="/countries">Countries</Link>
-					</li>
-				</ul>
-			</nav>
-			<Routes>
-				<Route index element={<Home />} />
-				<Route path="/countries" element={<CountryList />} />
-				<Route path="countries/:capital" element={<RouteWrapper />} />
-			</Routes>
-		</BrowserRouter>
+		<div className="app">
+			<BrowserRouter>
+				<nav>
+					<ul>
+						<li>
+							<Link to="/">Home</Link>
+						</li>
+						<li>
+							<Link to="/countries">Countries</Link>
+						</li>
+					</ul>
+				</nav>
+				<Routes>
+					<Route index element={<Home />} />
+					<Route path="/countries" element={<CountryList />} />
+					<Route path="countries/:capital" element={<RouteWrapper />} />
+				</Routes>
+			</BrowserRouter>
+		</div>
 	);
 };
 
