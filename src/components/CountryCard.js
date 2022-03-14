@@ -11,7 +11,7 @@ const CountryCard = ({
 	callingCodes,
 }) => {
 	return (
-		<Link to={capital} className="country-card">
+		<Link to={{ pathname: `${capital}` }} className="country-card">
 			<div className="card-header">
 				<h2>{name}</h2>
 				<p>
@@ -25,13 +25,13 @@ const CountryCard = ({
 			</p>
 			<p>
 				Language(s):{" "}
-				{languages.map((lang, i) => (
+				{languages?.map((lang, i) => (
 					<span key={i}> {lang.name} </span>
 				))}
 			</p>
 			<p>
 				Phone number prefix:{" "}
-				{callingCodes.map((code, i) => (
+				{callingCodes?.map((code, i) => (
 					<span key={i}> +{code} </span>
 				))}
 			</p>
